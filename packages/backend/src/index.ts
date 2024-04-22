@@ -7,9 +7,12 @@
  */
 
 import { createBackend } from '@backstage/backend-defaults';
+import {scaffolderMyModule} from "../../../plugins/scaffolder-backend-module-my-action/src/Module";
+
 
 const backend = createBackend();
 
+backend.add(scaffolderMyModule)
 backend.add(import('@backstage/plugin-app-backend/alpha'));
 backend.add(import('@backstage/plugin-proxy-backend/alpha'));
 backend.add(import('@backstage/plugin-scaffolder-backend/alpha'));
