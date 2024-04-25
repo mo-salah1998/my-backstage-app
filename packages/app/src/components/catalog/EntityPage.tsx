@@ -55,8 +55,12 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 
+import { WorkspacePage } from '@internal/backstage-plugin-workspace';
+
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+
+import {isModuleAvailable} from '@internal/backstage-plugin-module-commen-common'
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -175,6 +179,12 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
+
+
+    <EntityLayout.Route path="/workspace" if={isModuleAvailable} title="workspace">
+      <WorkspacePage />
+    </EntityLayout.Route>
+
   </EntityLayout>
 );
 
